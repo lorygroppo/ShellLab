@@ -1,2 +1,2 @@
 # ShellLab
-Reposity per laboratori Shell PoliTo
+Reposity per laboratori Shell Politecnico di Torino
