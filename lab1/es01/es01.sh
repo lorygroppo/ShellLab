@@ -1,36 +1,56 @@
 case $1 in
 	1)
-		if (( $#==2 ))
+		if(($#!=2))
 		then
-			find ~ -name $2 -type f -print
+			echo "numero di parametri errato"
 		else
-			echo "ERRORE: numero di parametri errato!"
+			find  $2
 		fi
-		;;
+	;;
 	2)
-		if (( $#==3 ))
+
+	;;
+	3)
+		if(( $#==4))
 		then
-			name=$2;
-			if [ ! -d $3 ]
+			if [ -d $3 ]
 			then
-				mkdir $3
-				echo "La cartella non esisteva ed è stata creata"
-			fi
-			cd $3
-			if [ -e $2 ]
-			then
-				echo ERRORE: il file $2 esiste già
+				if [ -d $4 ]
+				then
+					mv $3/$2 $4
+				else
+					echo " cartella non esistente, creare la cartella? (Y/n)"
+					read risp
+					if(( $risp=="Y" ))
+					then
+						mkdir $4
+						mv $3/$2 $4
+					fi		 
+				fi 
 			else
-				`touch $2`
-			fi
+				echo "cartella sorgente inesistente"
+			fi 
 		else
-			echo "ERRORE: numero di paramentri errato!"
+			echo "numero di parametri errato"
 		fi
-		;;
-
+	;;
+	4)
+		if(( $#==2))
+		then
+			rm $2
+		else
+			echo "numero di parametri errato"
+		fi
+	;;
+	5)
+		if(( $#==2))
+		then
+			rm -r $2
+		else
+			echo "numero di parametri errato"
+		fi
+	;;
 	*)
-		echo ERRORE: comando assente
-		;;
+		echo "comando errato o assente"
+	;;
 esac
-
-
