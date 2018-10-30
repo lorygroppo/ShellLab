@@ -32,20 +32,27 @@ case $1 in
 		then
 			if [ -d $3 ]
 			then
-				if [ -d $4 ]
+				if [ -e $3/$2 ]
 				then
-					mv $3/$2 $4
-				else
-					echo "cartella non esistente, creare la cartella? (Y/n)"
-					read risp
-					if(( $risp == "Y" ))
+					if [ -d $4 ]
 					then
-						mkdir $4
 						mv $3/$2 $4
 					else
-						echo Cartella non creata
-					fi		 
-				fi 
+						risp="test"
+						until [ $risp = "n" -o $risp = "Y" ]
+							do
+							echo "cartella non esistente, creare la cartella? (Y/n)"
+							read risp
+								if [ $risp = "Y" ]
+							then
+								mkdir $4
+								mv $3/$2 $4
+							fi
+						done
+					fi
+				else
+					echo file $2 non esiste
+				fi
 			else
 				echo "cartella sorgente inesistente"
 			fi 
