@@ -28,7 +28,7 @@ case $1 in
 		fi
 		;;
 	3)
-		if(( $#==4))
+		if (( $#==4 ))
 		then
 			if [ -d $3 ]
 			then
