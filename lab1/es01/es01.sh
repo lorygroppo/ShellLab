@@ -2,25 +2,7 @@ case $1 in
 	1)
 		ciaone
 	2)
-		if (( $#==3 ))
-		then
-			name=$2;
-			if [ ! -d $3 ]
-			then
-				mkdir $3
-				echo "La cartella non esisteva ed è stata creata"
-			fi
-			cd $3
-			if [ -e $2 ]
-			then
-				echo ERRORE: il file $2 esiste già
-			else
-				`touch $2`
-			fi
-		else
-			echo "ERRORE: numero di paramentri errato!"
-		fi
-		;;
+		scemo
 	3)
 		if (( $#==4 ))
 		then
