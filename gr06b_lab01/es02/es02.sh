@@ -1,6 +1,7 @@
 exec 3<host.txt
 exec 4>hostRenamed.txt
 while read LINE <&3
+parte 3
 do
 	m=$( echo "$LINE" | cut -d ')' -f 1 )
 	n=$(( $m+30 ))
@@ -9,4 +10,5 @@ do
 	host="host$m"
 	dominio="$host.${dominio#*.}"
 	echo "$ip $dominio $host" >&4
+	parte 4
 done
