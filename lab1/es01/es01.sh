@@ -1,12 +1,6 @@
 case $1 in
 	1)
-		if (( $#==2 ))
-		then
-			find ~ -name $2 -type f -print
-		else
-			echo "ERRORE: numero di parametri errato!"
-		fi
-		;;
+		ciaone
 	2)
 		if (( $#==3 ))
 		then
