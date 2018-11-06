@@ -1,0 +1,5 @@
+gr01a	 KO	 Missing file es02.sh
+gr03a	 KO	 no es02/hostRenamed.txt was generated.
+gr02a	 KO	 Unmatched output (66% correct)
+gr03b	 OK
+gr01b	 OK
