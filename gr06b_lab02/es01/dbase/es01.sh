@@ -32,8 +32,13 @@ do
 			done
 
 			#permesso execute
-			chmod +x es02.sh
+			if [ ! -x es02.sh ]
+			then
+				chmod +x es02.sh
+			fi
+
 			#execute
+
 			./es02.sh
 
 			if [ -e hostRenamed.txt ]
