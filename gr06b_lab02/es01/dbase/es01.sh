@@ -38,7 +38,6 @@ do
 			fi
 
 			#execute
-
 			./es02.sh
 
 			if [ -e hostRenamed.txt ]
@@ -47,7 +46,10 @@ do
 				then
 					status="OK"
 				else
-					status="KO	Unmatched output (percentuale% correct)"
+					correct_line=$(wc --lines ../../../hostRenamed.txt | egrep -o '[0-9]*')
+					incorrect_line=$(diff --suppress-common-lines ../../../hostRenamed.txt hostRenamed.txt | wc --lines | egrep -o '[0-9]*')
+					(( perc= $incorrect_line*100/$correct_line ))
+					status="KO	Unmatched output ($perc% correct)"
 				fi
 			else
 				status="KO 	no es02/hostRenamed.txt was generated."
