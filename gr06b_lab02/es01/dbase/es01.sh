@@ -47,8 +47,8 @@ do
 					status="OK"
 				else
 					correct_line=$(wc --lines ../../../hostRenamed.txt | egrep -o '[0-9]*')
-					incorrect_line=$(diff --suppress-common-lines ../../../hostRenamed.txt hostRenamed.txt | wc --lines | egrep -o '[0-9]*')
-					(( perc= $incorrect_line*100/$correct_line ))
+					incorrect_line=$(diff ../../../hostRenamed.txt hostRenamed.txt | sed '/^[^<]/d' | wc --lines)
+					(( perc= ($correct_line-$incorrect_line)*100/$correct_line ))
 					status="KO	Unmatched output ($perc% correct)"
 				fi
 			else
